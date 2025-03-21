@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meowfy</title>
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon" />
+    <script src="../js/scripts.js" type="module" defer></script>
+    <style>
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      header h3 {
+        margin-right: 10px; /* Отступ между заголовком и кнопкой */
+      }
+      body {
+        background-image: url('../images/background.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+      }
+      #upload-btn {
+        border-radius: 10px;
+        border: 2px solid rgb(29, 29, 29);
+        background-blend-mode: screen;
+        background: linear-gradient(limegreen, transparent),
+          linear-gradient(90deg, skyblue, transparent),
+          linear-gradient(-90deg, coral, transparent);
+      }
+      #player {
+        position: fixed;
+        height: 60px;
+        width: 100%;
+        left: 0;
+        bottom: 0;
+        background-color: black;
+        text-align: center;
+        /* 20px - отступы сверху и снизу, auto - автоматическое
+        выравнивание справа и слева (по центру) относительно родительского
+        контейнера (footer) */
+        margin: auto;
+        /* выравнивает внутренние элементы внутри div!  */
+      }
+      #progress-container {
+        width: 400px;
+        height: 5px;
+        margin-top: 10px;
+        background-color: #e0e0e088;
+        border-radius: 10px;
+        margin: 5px auto;
+      }
+      #progress-bar {
+        border-radius: 10px;
+        width: 0;
+        height: 100%;
+        background-color: #ffffff;
+      }
+      footer {
+        width: 100%;
+      }
+      .buttons button {
+        margin-top: 10px;
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+      .buttons img {
+        width: 20px;
+        height: 20px;
+      }
+      #songs-table {
+        background-color: rgba(0, 0, 0, 0.9);
+        cursor: default;
+        border-collapse: collapse;
+        color: seashell;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h3>This is Meowfy - streaming music service!</h3>
+
+      <form id="upload-form">
+        <!-- Скрытый элемент input type="file" -->
+        <input
+          type="file"
+          id="file"
+          name="file"
+          accept="audio/mp3"
+          multiple
+          style="display: none"
+          onchange="uploadFile()"
+        />
+        <!-- Кнопка, которая будет работать как input type="file" -->
+        <button
+          id="upload-btn"
+          type="button"
+          style="cursor: pointer"
+          onclick="document.getElementById('file').click()"
+        >
+          Upload File
+        </button>
+      </form>
+    </header>
+
+    <main>
+      <table id="songs-table"></table>
+    </main>
+
+    <footer>
+      <div id="player">
+        <div class="buttons">
+          <button id="previous-btn">
+            <img src="../images/previous.png" />
+          </button>
+          <button id="play-pause-btn">
+            <img id="play-pause-img" src="../images/play.png" />
+          </button>
+          <button id="next-btn">
+            <img src="../images/next.png" />
+          </button>
+        </div>
+        <div id="progress-container">
+          <div id="progress-bar"></div>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="../js/player.js"></script>
+  </body>
+</html>

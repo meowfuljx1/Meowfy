@@ -1,0 +1,22 @@
+spring:
+  application:
+    name=meowfy
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 150MB
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:db_query/create_songs_table.sql
+
+
